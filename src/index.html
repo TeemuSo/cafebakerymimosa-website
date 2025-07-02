@@ -207,20 +207,17 @@
     </header>
 
     <!-- Hero Section -->
-    <section id="home" class="relative bg-neutral-50 py-16 md:py-20 lg:py-24 overflow-hidden">
+    <section id="home" class="relative bg-neutral-50 min-h-screen flex items-center overflow-hidden" style="isolation: isolate;">
       <!-- Coffee beans background -->
-      <div class="absolute inset-0 opacity-90 bg-center bg-cover bg-no-repeat" style="background-image: url('beans.avif'); filter: blur(2px)"></div>
-      <div class="absolute inset-0" style="background: linear-gradient(135deg, rgba(252,252,252,0.95) 0%, rgba(250,250,250,0.92) 60%, rgba(250,250,250,0.75) 100%)"></div>
+      <div class="absolute inset-0 opacity-90 bg-center bg-cover bg-no-repeat" style="background-image: url('beans.avif'); filter: blur(0px); z-index: 1;"></div>
+      <div class="absolute inset-0" style="background: linear-gradient(90deg, rgba(255,255,255,1) 0%, rgba(250,250,250,0.93) 58%, rgba(250,250,250,0.5) 100%); z-index: 2;"></div>
       
-      <div class="relative max-w-7xl mx-auto px-4">
+      <div class="relative max-w-7xl mx-auto px-4 py-8" style="z-index: 3;">
         <div class="grid lg:grid-cols-2 gap-12 items-center">
           <!-- Content Column -->
           <div class="text-center lg:text-left">
             <div class="mb-8">
-              <div class="inline-flex items-center bg-green-100 text-green-800 px-4 py-2 rounded-full text-sm font-medium mb-6">
-                <span class="mr-2">🌱</span>
-                <span class="vegan-badge" data-fi="100% Vegaaninen" data-en="100% Vegan">100% Vegaaninen</span>
-              </div>
+              
               
              
               
@@ -345,7 +342,7 @@
     </section>
 
     <!-- About & Menu Section -->
-    <section id="about" class="py-16 gradient-brand-subtle">
+    <section id="about" class="py-16 gradient-brand-subtle relative" style="background-color: #faf9f7; z-index: 10;">
       <div class="max-w-5xl mx-auto px-4">
         <div class="text-center mb-12">
           <h2 class="about-title text-3xl md:text-4xl font-light mb-6 text-gray-900 font-heading" data-fi="Kahvila & Taidegalleria" data-en="Cafe & Art Gallery">Kahvila & Taidegalleria</h2>
