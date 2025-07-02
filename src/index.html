@@ -207,8 +207,12 @@
     </header>
 
     <!-- Hero Section -->
-    <section id="home" class="bg-neutral-50 py-16 md:py-20 lg:py-24">
-      <div class="max-w-7xl mx-auto px-4">
+    <section id="home" class="relative bg-neutral-50 py-16 md:py-20 lg:py-24 overflow-hidden">
+      <!-- Coffee beans background -->
+      <div class="absolute inset-0 opacity-90 bg-center bg-cover bg-no-repeat" style="background-image: url('beans.avif'); filter: blur(2px)"></div>
+      <div class="absolute inset-0" style="background: linear-gradient(135deg, rgba(252,252,252,0.95) 0%, rgba(250,250,250,0.92) 60%, rgba(250,250,250,0.75) 100%)"></div>
+      
+      <div class="relative max-w-7xl mx-auto px-4">
         <div class="grid lg:grid-cols-2 gap-12 items-center">
           <!-- Content Column -->
           <div class="text-center lg:text-left">
@@ -217,16 +221,19 @@
                 <span class="mr-2">🌱</span>
                 <span class="vegan-badge" data-fi="100% Vegaaninen" data-en="100% Vegan">100% Vegaaninen</span>
               </div>
-              <h1 class="hero-title text-4xl md:text-6xl font-light text-gray-900 mb-6 tracking-tight leading-tight font-heading" data-fi="Cafe Bakery & Gallery<br><span class='text-brand font-medium'>Mimosa</span>" data-en="Cafe Bakery & Gallery<br><span class='text-brand font-medium'>Mimosa</span>">
+              
+             
+              
+              <h1 class="hero-title text-4xl md:text-6xl font-light text-gray-900 mb-6 tracking-tight leading-tight font-heading" style="text-shadow: 0 2px 4px rgba(0,0,0,0.1), 0 1px 2px rgba(255,255,255,0.8)" data-fi="Cafe Bakery & Gallery<br><span class='text-brand font-medium'>Mimosa</span>" data-en="Cafe Bakery & Gallery<br><span class='text-brand font-medium'>Mimosa</span>">
                 Cafe Bakery & Gallery<br>
                 <span class="text-brand font-medium">Mimosa</span>
               </h1>
             </div>
             <div class="max-w-2xl lg:max-w-none mb-10">
-              <p class="hero-subtitle text-lg md:text-xl text-gray-600 mb-4 font-light leading-relaxed" data-fi="Vegaanisia herkkuja, La Marzocco erikoiskahvit ja paikallisten taiteilijoiden teoksia Tampereen sydämessä." data-en="Vegan treats, La Marzocco specialty coffee, and local artists' works in the heart of Tampere.">
+              <p class="hero-subtitle text-lg md:text-xl text-gray-600 mb-4 font-light leading-relaxed" style="text-shadow: 0 1px 3px rgba(0,0,0,0.1), 0 1px 2px rgba(255,255,255,0.7)" data-fi="Vegaanisia herkkuja, La Marzocco erikoiskahvit ja paikallisten taiteilijoiden teoksia Tampereen sydämessä." data-en="Vegan treats, La Marzocco specialty coffee, and local artists' works in the heart of Tampere.">
                 Vegaanisia herkkuja, La Marzocco erikoiskahvit ja paikallisten taiteilijoiden teoksia Tampereen sydämessä.
               </p>
-              <p class="hero-description text-gray-500 font-light mb-6" data-fi="Tampere • Ratikka pysähtyy lähellä" data-en="Tampere • Tram stops nearby">
+              <p class="hero-description text-gray-500 font-light mb-6" style="text-shadow: 0 1px 3px rgba(0,0,0,0.1), 0 1px 2px rgba(255,255,255,0.7)" data-fi="Tampere • Ratikka pysähtyy lähellä" data-en="Tampere • Tram stops nearby">
                 Tampere • Ratikka pysähtyy lähellä
               </p>
               
@@ -279,25 +286,58 @@
             </div>
           </div>
           
-          <!-- Image Column -->
+          <!-- Testimonials Column -->
           <div class="relative">
-            <div class="relative rounded-3xl overflow-hidden shadow-2xl">
-              <img 
-                src="https://images.unsplash.com/photo-1447933601403-0c6688de566e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" 
-                alt="Fresh roasted coffee beans"
-                class="w-full h-[400px] md:h-[500px] object-cover"
-                loading="lazy"
-              />
-              <!-- Elegant overlay with coffee cup icon -->
-              <div class="absolute top-6 right-6 bg-white/90 backdrop-blur-sm rounded-full p-3 shadow-lg">
-                <div class="w-8 h-8 text-brand">
-                  <svg fill="currentColor" viewBox="0 0 24 24" class="w-full h-full">
-                    <path d="M2,21V19H20V21H2M20,8V5H18V8H20M20,3A2,2 0 0,1 22,5V8A2,2 0 0,1 20,10H18V13A4,4 0 0,1 14,17H8A4,4 0 0,1 4,13V3H20M16,5H6V13A2,2 0 0,0 8,15H14A2,2 0 0,0 16,13V5Z" />
-                  </svg>
+            <div class="bg-white/90 backdrop-blur-sm rounded-3xl shadow-2xl p-6 border border-gray-100">
+              <div class="mb-6">
+                <h3 class="testimonials-title text-xl font-semibold text-gray-900 mb-2" data-fi="Asiakkaiden suositukset" data-en="Customer Recommendations">Asiakkaiden suositukset</h3>
+                <div class="flex items-center space-x-2 text-sm text-gray-600">
+                  <div class="flex text-yellow-400">
+                    <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                      <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                    </svg>
+                    <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                      <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                    </svg>
+                    <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                      <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                    </svg>
+                    <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                      <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                    </svg>
+                    <svg class="w-4 h-4 text-gray-300" fill="currentColor" viewBox="0 0 20 20">
+                      <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                    </svg>
+                  </div>
+                  <span class="testimonials-rating" data-fi="4.4/5 • 243 arvostelua" data-en="4.4/5 • 243 reviews">4.4/5 • 243 arvostelua</span>
                 </div>
               </div>
-              <!-- Subtle gradient overlay for better text contrast if needed -->
-              <div class="absolute inset-0 bg-gradient-to-t from-black/10 via-transparent to-transparent"></div>
+              
+              <!-- Single rotating testimonial -->
+              <div id="testimonial-container" class="bg-gray-50 p-6 rounded-xl border border-gray-100 min-h-[120px]">
+                <div id="testimonial-content">
+                  <p class="text-sm text-gray-700 mb-4 italic leading-relaxed testimonial-text" data-fi="&quot;Jotain kertoo varmaan se, että kun oltiin syöty vihiksemme sekasyöjä-avomieheni meni ostamaan vielä yhden vihiksen itselleen ja kaksi vihistä meille kotiin illaksi. Suosittelen kovasti!&quot;" data-en="&quot;Something tells when we had eaten our pastries, my omnivore boyfriend went to buy another pastry for himself and two pastries for us to take home. I highly recommend!&quot;">
+                    "Jotain kertoo varmaan se, että kun oltiin syöty vihiksemme sekasyöjä-avomieheni meni ostamaan vielä yhden vihiksen itselleen ja kaksi vihistä meille kotiin illaksi. Suosittelen kovasti!"
+                  </p>
+                  <div class="flex items-center justify-between">
+                    <span class="font-medium text-xs text-gray-500 testimonial-author">Gastropapu</span>
+                                         <div class="flex space-x-1">
+                       <button class="w-2 h-2 rounded-full bg-brand" data-testimonial="0" aria-label="Show testimonial 1"></button>
+                       <button class="w-2 h-2 rounded-full bg-gray-300" data-testimonial="1" aria-label="Show testimonial 2"></button>
+                       <button class="w-2 h-2 rounded-full bg-gray-300" data-testimonial="2" aria-label="Show testimonial 3"></button>
+                     </div>
+                  </div>
+                </div>
+              </div>
+              
+              <div class="mt-4 pt-4 border-t border-gray-200">
+                <a href="https://www.google.com/search?q=cafe+mimosa+tampere+reviews" target="_blank" rel="noopener noreferrer" class="inline-flex items-center text-brand hover:text-brand-dark font-medium text-sm transition-colors">
+                  <span data-fi="Lue lisää arvosteluja" data-en="Read more reviews">Lue lisää arvosteluja</span>
+                  <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
+                  </svg>
+                </a>
+              </div>
             </div>
           </div>
         </div>
@@ -615,6 +655,11 @@
         
         // Update HTML lang attribute
         document.documentElement.lang = lang;
+        
+        // Update current testimonial if testimonials are loaded
+        if (typeof updateTestimonial === 'function' && typeof currentTestimonial !== 'undefined') {
+          updateTestimonial(currentTestimonial);
+        }
       }
       
       // Initialize language on page load
@@ -650,6 +695,71 @@
           }, 1500);
         }
       });
+
+      // Testimonial rotation functionality
+      const testimonials = [
+        {
+          text: {
+            fi: '"Jotain kertoo varmaan se, että kun oltiin syöty vihiksemme sekasyöjä-avomieheni meni ostamaan vielä yhden vihiksen itselleen ja kaksi vihistä meille kotiin illaksi. Suosittelen kovasti!"',
+            en: '"Something tells when we had eaten our pastries, my omnivore boyfriend went to buy another pastry for himself and two pastries for us to take home. I highly recommend!"'
+          },
+          author: 'Gastropapu'
+        },
+        {
+          text: {
+            fi: '"Olen aina haaveillut vakiopaikasta. Vasta nyt olen löytänyt sopen, joka tuntuu vakiokahvilalta sillä tavalla, kun haluan sen tuntuvan. Se on naapuritalomme Cafe & Bakery Mimosa."',
+            en: '"I\'ve always dreamed of having a regular place. Only now have I found a spot that feels like a regular cafe the way I want it to feel. It\'s our neighbor Cafe & Bakery Mimosa."'
+          },
+          author: 'Hyvä Kurkku -palsta'
+        },
+        {
+          text: {
+            fi: '"Onhan tämä nyt tietysti ihanaa. Ja on tämä paikka ihan oikeasti olemassa, en nähnyt unta."',
+            en: '"This is of course lovely. And this place really does exist, I wasn\'t dreaming."'
+          },
+          author: 'Savusuolaa-blogi'
+        }
+      ];
+
+      let currentTestimonial = 0;
+      
+      function updateTestimonial(index) {
+        const currentLang = document.documentElement.lang || 'fi';
+        const testimonialText = document.querySelector('.testimonial-text');
+        const testimonialAuthor = document.querySelector('.testimonial-author');
+        const buttons = document.querySelectorAll('[data-testimonial]');
+        
+        // Update content
+        testimonialText.textContent = testimonials[index].text[currentLang];
+        testimonialAuthor.textContent = testimonials[index].author;
+        
+        // Update button states
+        buttons.forEach((btn, i) => {
+          if (i === index) {
+            btn.classList.remove('bg-gray-300');
+            btn.classList.add('bg-brand');
+          } else {
+            btn.classList.remove('bg-brand');
+            btn.classList.add('bg-gray-300');
+          }
+        });
+        
+        currentTestimonial = index;
+      }
+      
+      // Add click handlers to testimonial buttons
+      document.querySelectorAll('[data-testimonial]').forEach(button => {
+        button.addEventListener('click', () => {
+          const index = parseInt(button.dataset.testimonial);
+          updateTestimonial(index);
+        });
+      });
+      
+      // Auto-rotate testimonials every 5 seconds
+      setInterval(() => {
+        currentTestimonial = (currentTestimonial + 1) % testimonials.length;
+        updateTestimonial(currentTestimonial);
+      }, 5000);
     </script>
   </body>
 </html> 
