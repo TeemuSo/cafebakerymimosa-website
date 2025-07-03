@@ -193,7 +193,7 @@
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex justify-between items-center py-6">
           <div class="flex items-center">
-            <h1 class="text-2xl font-semibold text-gray-900 tracking-tight font-heading">Cafe Bakery & Gallery Mimosa</h1>
+            <h1 class="hidden md:block text-2xl font-semibold text-gray-900 tracking-tight font-heading">Cafe Bakery & Gallery Mimosa</h1>
           </div>
           <div class="hidden md:flex items-center space-x-8">
             <nav class="flex space-x-8">
@@ -229,10 +229,10 @@
     </header>
 
     <!-- Hero Section -->
-    <section id="home" class="relative bg-neutral-50 min-h-screen flex items-center overflow-hidden">
-      <!-- Coffee beans background -->
-      <div class="absolute inset-0 opacity-80 bg-center bg-cover bg-no-repeat" style="background-image: url('beans.avif');"></div>
-      <div class="absolute inset-0 bg-gradient-to-r from-white via-white/95 to-white/70"></div>
+    <section id="home" class="relative bg-gradient-to-br from-amber-50 via-orange-50 to-yellow-50 md:bg-neutral-50 min-h-screen flex items-center overflow-hidden">
+      <!-- Coffee beans background - hidden on mobile -->
+      <div class="hidden md:block absolute inset-0 opacity-80 bg-center bg-cover bg-no-repeat" style="background-image: url('beans.avif');"></div>
+      <div class="hidden md:block absolute inset-0 bg-gradient-to-r from-white via-white/95 to-white/70"></div>
       
       <div class="relative max-w-7xl mx-auto px-4 py-8 z-10">
         <div class="grid lg:grid-cols-2 gap-12 items-center">
@@ -249,7 +249,7 @@
               </h1>
             </div>
             <div class="max-w-2xl lg:max-w-none mb-10">
-              <p class="hero-subtitle text-lg md:text-xl text-gray-600 mb-4 font-light leading-relaxed" data-fi="Vegaanisia herkkuja, La Marzocco erikoiskahvit ja paikallisten taiteilijoiden teoksia Tampereen sydämessä." data-en="Vegan treats, La Marzocco specialty coffee, and local artists' works in the heart of Tampere.">
+              <p class="hero-subtitle text-lg md:text-xl text-gray-800 md:text-gray-600 mb-4 font-medium md:font-light leading-relaxed" data-fi="Vegaanisia herkkuja, La Marzocco erikoiskahvit ja paikallisten taiteilijoiden teoksia Tampereen sydämessä." data-en="Vegan treats, La Marzocco specialty coffee, and local artists' works in the heart of Tampere.">
                 Vegaanisia herkkuja, La Marzocco erikoiskahvit ja paikallisten taiteilijoiden teoksia Tampereen sydämessä.
               </p>
               <p class="hero-description text-gray-500 font-light mb-6" data-fi="Tampere • Ratikka pysähtyy lähellä" data-en="Tampere • Tram stops nearby">
