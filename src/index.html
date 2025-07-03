@@ -166,6 +166,28 @@
     </style>
   </head>
   <body class="font-sans bg-white text-gray-900">
+    
+    <!-- GDPR Cookie Banner -->
+    <div id="cookie-banner" class="fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 shadow-lg z-50 p-4 hidden">
+      <div class="max-w-4xl mx-auto">
+        <div class="flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+          <div class="flex-1">
+            <h3 class="cookie-banner-title font-semibold text-gray-900 mb-2" data-fi="Evästeet ja yksityisyys" data-en="Cookies and Privacy">Evästeet ja yksityisyys</h3>
+            <p class="cookie-banner-text text-sm text-gray-600 leading-relaxed" data-fi="Käytämme välttämättömiä evästeitä sivuston toiminnallisuuden takaamiseksi (kielivalinta) sekä ulkoisia palveluita kuten Google Maps -karttoja. Yhteydenottolomakkeen kautta kerätyt tiedot käsitellään yhteydenottojen hoitamiseksi." data-en="We use essential cookies to ensure website functionality (language selection) and external services like Google Maps. Contact form data is processed to handle inquiries.">
+              Käytämme välttämättömiä evästeitä sivuston toiminnallisuuden takaamiseksi (kielivalinta) sekä ulkoisia palveluita kuten Google Maps -karttoja. Yhteydenottolomakkeen kautta kerätyt tiedot käsitellään yhteydenottojen hoitamiseksi.
+            </p>
+          </div>
+          <div class="flex flex-col sm:flex-row gap-3 w-full md:w-auto">
+            <button id="cookie-accept" class="cookie-accept-btn bg-brand text-white px-6 py-2 rounded-lg font-medium hover:bg-brand-dark transition-colors text-sm" data-fi="Hyväksy kaikki" data-en="Accept All">
+              Hyväksy kaikki
+            </button>
+            <button id="cookie-essential" class="cookie-essential-btn border border-gray-300 text-gray-700 px-6 py-2 rounded-lg font-medium hover:bg-gray-50 transition-colors text-sm" data-fi="Vain välttämättömät" data-en="Essential Only">
+              Vain välttämättömät
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
     <!-- Header -->
     <header class="bg-transparent backdrop-blur-sm sticky top-0 z-50">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -757,6 +779,86 @@
         currentTestimonial = (currentTestimonial + 1) % testimonials.length;
         updateTestimonial(currentTestimonial);
       }, 5000);
+
+      // GDPR Cookie Banner functionality
+      function showCookieBanner() {
+        const banner = document.getElementById('cookie-banner');
+        banner.classList.remove('hidden');
+        
+        // Animate in
+        setTimeout(() => {
+          banner.style.transform = 'translateY(0)';
+          banner.style.opacity = '1';
+        }, 100);
+      }
+      
+      function hideCookieBanner() {
+        const banner = document.getElementById('cookie-banner');
+        banner.style.transform = 'translateY(100%)';
+        banner.style.opacity = '0';
+        
+        setTimeout(() => {
+          banner.classList.add('hidden');
+        }, 300);
+      }
+      
+      function setCookieConsent(level) {
+        localStorage.setItem('cookie-consent', level);
+        localStorage.setItem('cookie-consent-date', new Date().toISOString());
+        hideCookieBanner();
+        
+        // If user accepted all cookies, we can load additional services
+        if (level === 'all') {
+          // Add any additional analytics or tracking here if needed in the future
+          console.log('All cookies accepted');
+        } else {
+          console.log('Only essential cookies accepted');
+        }
+      }
+      
+      function checkCookieConsent() {
+        const consent = localStorage.getItem('cookie-consent');
+        const consentDate = localStorage.getItem('cookie-consent-date');
+        
+        // Check if consent is older than 1 year
+        if (consentDate) {
+          const consentDateTime = new Date(consentDate);
+          const oneYearAgo = new Date();
+          oneYearAgo.setFullYear(oneYearAgo.getFullYear() - 1);
+          
+          if (consentDateTime < oneYearAgo) {
+            // Consent expired, show banner again
+            localStorage.removeItem('cookie-consent');
+            localStorage.removeItem('cookie-consent-date');
+            return false;
+          }
+        }
+        
+        return consent !== null;
+      }
+      
+      // Initialize cookie banner
+      document.addEventListener('DOMContentLoaded', function() {
+        // Set initial banner state
+        const banner = document.getElementById('cookie-banner');
+        banner.style.transform = 'translateY(100%)';
+        banner.style.opacity = '0';
+        banner.style.transition = 'all 0.3s ease-out';
+        
+        // Show banner if no consent given
+        if (!checkCookieConsent()) {
+          setTimeout(showCookieBanner, 1000); // Show after 1 second delay
+        }
+        
+        // Add event listeners
+        document.getElementById('cookie-accept').addEventListener('click', () => {
+          setCookieConsent('all');
+        });
+        
+        document.getElementById('cookie-essential').addEventListener('click', () => {
+          setCookieConsent('essential');
+        });
+      });
     </script>
   </body>
 </html> 
