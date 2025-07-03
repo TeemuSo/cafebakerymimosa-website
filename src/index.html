@@ -333,17 +333,17 @@
               </div>
               
               <!-- Single rotating testimonial -->
-              <div id="testimonial-container" class="bg-gray-50 p-6 rounded-xl border border-gray-100 min-h-[120px]">
-                <div id="testimonial-content">
-                  <p class="text-sm text-gray-700 mb-4 italic leading-relaxed testimonial-text" data-fi="&quot;Jotain kertoo varmaan se, että kun oltiin syöty vihiksemme sekasyöjä-avomieheni meni ostamaan vielä yhden vihiksen itselleen ja kaksi vihistä meille kotiin illaksi. Suosittelen kovasti!&quot;" data-en="&quot;Something tells when we had eaten our pastries, my omnivore boyfriend went to buy another pastry for himself and two pastries for us to take home. I highly recommend!&quot;">
+              <div id="testimonial-container" class="bg-gray-50 p-6 rounded-xl border border-gray-100 relative overflow-hidden" style="min-height: 140px;">
+                <div id="testimonial-content" class="transition-opacity duration-500 ease-in-out">
+                  <p class="text-sm text-gray-700 mb-4 italic leading-relaxed testimonial-text" style="min-height: 60px; display: flex; align-items: center;">
                     "Jotain kertoo varmaan se, että kun oltiin syöty vihiksemme sekasyöjä-avomieheni meni ostamaan vielä yhden vihiksen itselleen ja kaksi vihistä meille kotiin illaksi. Suosittelen kovasti!"
                   </p>
                   <div class="flex items-center justify-between">
                     <span class="font-medium text-xs text-gray-500 testimonial-author">Gastropapu</span>
-                                         <div class="flex space-x-1">
-                       <button class="w-2 h-2 rounded-full bg-brand" data-testimonial="0" aria-label="Show testimonial 1"></button>
-                       <button class="w-2 h-2 rounded-full bg-gray-300" data-testimonial="1" aria-label="Show testimonial 2"></button>
-                       <button class="w-2 h-2 rounded-full bg-gray-300" data-testimonial="2" aria-label="Show testimonial 3"></button>
+                    <div class="flex space-x-1">
+                       <button class="w-2 h-2 rounded-full bg-brand transition-all duration-300 hover:scale-125" data-testimonial="0" aria-label="Show testimonial 1"></button>
+                       <button class="w-2 h-2 rounded-full bg-gray-300 transition-all duration-300 hover:scale-125" data-testimonial="1" aria-label="Show testimonial 2"></button>
+                       <button class="w-2 h-2 rounded-full bg-gray-300 transition-all duration-300 hover:scale-125" data-testimonial="2" aria-label="Show testimonial 3"></button>
                      </div>
                   </div>
                 </div>
@@ -744,24 +744,33 @@
       
       function updateTestimonial(index) {
         const currentLang = document.documentElement.lang || 'fi';
+        const testimonialContent = document.getElementById('testimonial-content');
         const testimonialText = document.querySelector('.testimonial-text');
         const testimonialAuthor = document.querySelector('.testimonial-author');
         const buttons = document.querySelectorAll('[data-testimonial]');
         
-        // Update content
-        testimonialText.textContent = testimonials[index].text[currentLang];
-        testimonialAuthor.textContent = testimonials[index].author;
+        // Fade out
+        testimonialContent.style.opacity = '0';
         
-        // Update button states
-        buttons.forEach((btn, i) => {
-          if (i === index) {
-            btn.classList.remove('bg-gray-300');
-            btn.classList.add('bg-brand');
-          } else {
-            btn.classList.remove('bg-brand');
-            btn.classList.add('bg-gray-300');
-          }
-        });
+        setTimeout(() => {
+          // Update content while invisible
+          testimonialText.textContent = testimonials[index].text[currentLang];
+          testimonialAuthor.textContent = testimonials[index].author;
+          
+          // Update button states
+          buttons.forEach((btn, i) => {
+            if (i === index) {
+              btn.classList.remove('bg-gray-300');
+              btn.classList.add('bg-brand');
+            } else {
+              btn.classList.remove('bg-brand');
+              btn.classList.add('bg-gray-300');
+            }
+          });
+          
+          // Fade in
+          testimonialContent.style.opacity = '1';
+        }, 250); // Half of the transition duration
         
         currentTestimonial = index;
       }
@@ -774,11 +783,24 @@
         });
       });
       
-      // Auto-rotate testimonials every 5 seconds
-      setInterval(() => {
+      // Auto-rotate testimonials every 7 seconds
+      let testimonialInterval = setInterval(() => {
         currentTestimonial = (currentTestimonial + 1) % testimonials.length;
         updateTestimonial(currentTestimonial);
-      }, 5000);
+      }, 7000);
+      
+      // Pause rotation on hover
+      const testimonialContainer = document.getElementById('testimonial-container');
+      testimonialContainer.addEventListener('mouseenter', () => {
+        clearInterval(testimonialInterval);
+      });
+      
+      testimonialContainer.addEventListener('mouseleave', () => {
+        testimonialInterval = setInterval(() => {
+          currentTestimonial = (currentTestimonial + 1) % testimonials.length;
+          updateTestimonial(currentTestimonial);
+        }, 7000);
+      });
 
       // GDPR Cookie Banner functionality
       function showCookieBanner() {
